@@ -1,0 +1,73 @@
+<div class="container">
+    <!-- Header section -->
+    <div class="p-4 bg-primary bg-gradient">
+      <h1 class="app-name fs-1 fw-bold text-white">To-Do List</h1>
+    </div>
+  
+    <!-- Horizontal line to separate sections -->
+    <hr />
+  
+    
+    <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+      <div class="form-group">
+        <label for="task" class="mb-2 fs-5 fw-semibold">Task</label>
+        
+        <input
+          type="text"
+          class=" task-input form-control"
+          id="task"
+          placeholder="Enter task"
+          ngModel
+          name="task"
+          required
+        />
+        
+        <small
+          *ngIf="taskForm.invalid && taskForm.dirty"
+          id="errorMessage"
+          class="form-text text-danger"
+          >Required field</small
+        >
+        <!-- Submit button, disabled if the form is invalid -->
+        <button
+          [disabled]="taskForm.invalid"
+          id="submitButton"
+          type="submit"
+          class="btn bg-primary bg-gradient text-white fw-semibold"
+        >
+          Add +
+        </button>
+      </div>
+    </form>
+  
+    
+    <hr />
+  
+    <!-- Task list table -->
+    <table class="table fs-5">
+      <thead>
+        <tr>
+          <th scope="col">Completed</th>
+          <th scope="col">Task</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over the taskArray to display each task -->
+        <tr *ngFor="let t of taskArray; index as i">
+          
+          <td><input (change)="onCheck(i)" id="myCheckbox" type="checkbox" /></td>
+          
+          <td [ngClass]="{ taskStrike: t.isCompleted }">{{ t.taskName }}</td>
+          
+          <td>
+            <button class="btn btn-danger" (click)="onDelete(i)">
+              
+              <i class="fa-solid fa-trash ml-10"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

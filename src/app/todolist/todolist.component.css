@@ -1,0 +1,21 @@
+
+.app-name{
+    text-align: center;
+}
+#submitButton {
+    margin-top: 20px;
+}
+#myCheckbox {
+    margin-left: 30px;
+    transform: scale(1.9);
+}
+.taskStrike {           /* if the task is completed */
+    text-decoration: line-through; 
+    color: grey; 
+  }
+  .task-input{
+    border: none;
+    outline: none;
+    background-color: #dadada;
+    padding: 9px ;
+  }
